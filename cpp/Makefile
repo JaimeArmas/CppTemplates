@@ -34,7 +34,6 @@ MAIN	:= main.exe
 SOURCEDIRS	:= $(SRC)
 INCLUDEDIRS	:= $(INCLUDE)
 LIBDIRS		:= $(LIB)
-BUILDDIRS	:= $(BUILD)
 FIXPATH = $(subst /,\,$1)
 RM			:= del /q /f
 MD	:= mkdir
@@ -43,7 +42,6 @@ MAIN	:= main
 SOURCEDIRS	:= $(shell find $(SRC) -type d)
 INCLUDEDIRS	:= $(shell find $(INCLUDE) -type d)
 LIBDIRS		:= $(shell find $(LIB) -type d)
-BUILDDIRS	:= $(shell find $(BUILD) -type d)
 FIXPATH = $1
 RM = rm -f
 MD	:= mkdir -p
@@ -59,7 +57,7 @@ LIBS		:= $(patsubst %,-L%, $(LIBDIRS:%/=%))
 SOURCES		:= $(wildcard $(patsubst %,%/*.cpp, $(SOURCEDIRS)))
 
 # define the C object files 
-OBJECTS		:= $(patsubst $(SOURCEDIRS)%,$(BUILDDIRS)%, $(SOURCES:.cpp=.o))
+OBJECTS		:= $(patsubst $(SOURCEDIRS)%,$(BUILD)%, $(SOURCES:.cpp=.o))
 
 #
 # The following part of the makefile is generic; it can be used to 
@@ -69,14 +67,14 @@ OBJECTS		:= $(patsubst $(SOURCEDIRS)%,$(BUILDDIRS)%, $(SOURCES:.cpp=.o))
 
 OUTPUTMAIN	:= $(call FIXPATH,$(BIN)/$(MAIN))
 
-all: $(BIN) $(BUILDDIRS) $(MAIN)
+all: $(BIN) $(BUILD) $(MAIN)
 	@echo Executing 'all' complete!
 
 $(BIN):
 	$(MD) $(BIN)
 
-$(BUILDDIRS):
-	$(MD) $(BUILDDIRS)
+$(BUILD):
+	$(MD) $(BUILD)
 
 $(MAIN): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS)
@@ -85,7 +83,7 @@ $(MAIN): $(OBJECTS)
 # it uses automatic variables $<: the name of the prerequisite of
 # the rule(a .c file) and $@: the name of the target of the rule (a .o file) 
 # (see the gnu make manual section about automatic variables)
-$(BUILDDIRS)/%.o: $(SOURCEDIRS)/%.cpp
+$(BUILD)/%.o: $(SOURCEDIRS)/%.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $<  -o $@
 
 .PHONY: clean
