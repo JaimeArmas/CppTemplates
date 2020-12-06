@@ -44,7 +44,7 @@
               "src/main.cpp"
           ]
       },
-      "command": "make run"
+      "command": "bash -c make run"
     }
   ]
 }
