@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/FenixTemplates/FenixTemplates/master/fenix-schema.json",
   "author": "JaimeArmas",
-  "repoName": "Easy C++ Projects",
-  "repoUrl": "https://github.com/JaimeArmas/CppTemplates.git",
+  "repoName": "CppTemplates",
+  "repoUrl": "https://raw.githubusercontent.com/JaimeArmas/CppTemplates/master/",
   "version": 1.0,
   "templates": [
     {
