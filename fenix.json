@@ -38,6 +38,10 @@
               {
                   "from": "cpp/launch.json",
                   "to": ".vscode/launch.json"
+              },
+              {
+                  "from": "cpp/.editorconfig",
+                  "to": ".editorconfig"
               }
           ],
           "open": [
