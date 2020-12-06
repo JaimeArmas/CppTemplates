@@ -43,8 +43,7 @@
           "open": [
               "src/main.cpp"
           ]
-      },
-      "command": "bash -c make run"
+      }
     }
   ]
 }
