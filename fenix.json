@@ -42,6 +42,10 @@
               {
                   "from": "cpp/.editorconfig",
                   "to": ".editorconfig"
+              },
+              {
+                  "from": "cpp/.clang-format",
+                  "to": ".clang-format"
               }
           ],
           "open": [
