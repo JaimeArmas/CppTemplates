@@ -19,7 +19,8 @@
           "bin",
           "include",
           "lib",
-          "src"
+          "src",
+          "test"
       ],
       "files": {
           "download": [
